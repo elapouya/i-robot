@@ -3,8 +3,8 @@ Simple bot for clustaar
 
 to use it :
 
-`./irobot.py` for CLI
+`python3 ./irobot.py` for CLI
 
 or 
 
-`./irobot.py --api` for API simulation
+`python3 ./irobot.py --api` for API simulation
