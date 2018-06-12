@@ -30,7 +30,7 @@ else:
 story1 = Story(first_step='first_step')
 
 step = Step('first_step')
-step.add_action(SendMessageAction('Hi, how are you ?'))
+step.add_action(SendMessageAction('Hi, how are you ? (tips: fine or sad)'))
 step.add_connector(IFContainsConnector('fine_step','fine'))
 step.add_connector(IFContainsConnector('sad_step','sad'))
 story1.add_step(step)
@@ -41,7 +41,7 @@ step.add_action(EndStoryAction())
 story1.add_step(step)
 
 step = Step('sad_step')
-step.add_action(SendMessageAction('Why ?'))
+step.add_action(SendMessageAction('Why ? (tips: bad day)'))
 step.add_connector(IFContainsConnector('bad_day_step','day'))
 story1.add_step(step)
 
@@ -57,7 +57,7 @@ intent1 = Intent('hello', story1)
 # Define a 2nd Intent/Story (French version)
 story2 = Story(first_step='first_step')
 step = Step('first_step')
-step.add_action(SendMessageAction('Salut, comment ça va?'))
+step.add_action(SendMessageAction('Salut, comment ça va? (aide: roule ou triste)'))
 step.add_connector(IFContainsConnector('fine_step','roule'))  # ex : ca roule
 step.add_connector(IFContainsConnector('sad_step','triste'))
 story2.add_step(step)
@@ -68,7 +68,7 @@ step.add_action(EndStoryAction())
 story2.add_step(step)
 
 step = Step('sad_step')
-step.add_action(SendMessageAction("Mais qu'est-ce qui ne va pas ?"))
+step.add_action(SendMessageAction("Mais qu'est-ce qui ne va pas ? (aide: pas mon jour)"))
 step.add_connector(IFContainsConnector('bad_day_step','jour'))  # ex : c pas mon jour
 story2.add_step(step)
 
@@ -101,6 +101,6 @@ irobot.add_intent(intent3)
 # run the bot.
 try:
     irobot.run()
-except KeyboardInterrupt:
+except (KeyboardInterrupt, EOFError):
     print('\n\nI Robot has been stopped, have a nice day.\n\n')
 
